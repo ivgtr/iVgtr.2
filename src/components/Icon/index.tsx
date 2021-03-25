@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 
 const Image = () => {
   const [image, setImage] = useState<'/icon_dark.png' | '/icon.png'>('/icon.png')
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setImage('/icon_dark.png')
     } else {

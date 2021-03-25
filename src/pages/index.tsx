@@ -1,10 +1,12 @@
 import React from 'react'
+import { Container } from '../components/Container'
+import { Profle } from '../components/Profle'
 
 const Home = () => {
   return (
-    <>
-      <p>test</p>
-    </>
+    <Container>
+      <Profle />
+    </Container>
   )
 }
 

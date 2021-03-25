@@ -1,0 +1,11 @@
+.about {
+  ul {
+    padding: 0 0 0 1em;
+    margin: 0.5em 0;
+    list-style: disc;
+
+    li p:last-child {
+      margin: 0;
+    }
+  }
+}

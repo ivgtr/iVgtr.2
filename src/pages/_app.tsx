@@ -8,15 +8,13 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <title>null</title>
+        <title>iVgtr.me</title>
         <meta name="description" content="null"></meta>
         <meta name="viewport" content="width=device-width,height=device-height" key="viewport" />
         <meta name="theme-color" content="#087da1" key="themeColor" />
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
-      <main id="root">
-        <Component {...pageProps} />
-      </main>
+      <Component {...pageProps} />
     </>
   )
 }

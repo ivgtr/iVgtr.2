@@ -1,16 +1,17 @@
 import React from 'react'
-import Link from 'next/link'
+import { Container } from '../../components/Container'
+import { ContentsList } from '../../components/ContentsList'
+import { Navigation } from '../../components/Navigation'
 
-const Home = () => {
+const Contents = () => {
   return (
     <div>
-      <nav>
-        <Link href="/">
-          <a>もどる</a>
-        </Link>
-      </nav>
+      <Navigation />
+      <Container>
+        <ContentsList />
+      </Container>
     </div>
   )
 }
 
-export default Home
+export default Contents

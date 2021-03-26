@@ -38,7 +38,7 @@ const About = () => {
           name
           <ul>
             <li>
-              ねぎ / まわるはな(
+              ねぎ / まわるはな (
               <a
                 href="https://twitter.com/mawaru_hana"
                 target="_blank"
@@ -55,21 +55,30 @@ const About = () => {
           profile
           <ul>
             <li>
+              🎂 96/11/12 (
               <a
                 href="https://amz.run/3WX9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline text-blue-500"
               >
-                🎂 96/11/12
+                乞食リスト
               </a>
+              )
             </li>
-            <li>コンテンツを消費することが得意</li>
             <li>
-              <Link href="/contents">
-                <a className="hover:underline text-blue-500">漏れ...</a>
-              </Link>
+              コンテンツを消費することが得意
+              <ul>
+                <li>
+                  漏れ (
+                  <Link href="/contents">
+                    <a className="hover:underline text-blue-500">More...</a>
+                  </Link>
+                  )
+                </li>
+              </ul>
             </li>
+
             <li>
               <Link href="/jobs">
                 <a className="hover:underline text-blue-500">仕事</a>

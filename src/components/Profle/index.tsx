@@ -1,10 +1,12 @@
 import React from 'react'
 import { Icon } from '../Icon'
+// import { Coment } from '../Coment'
 import { Description } from '../Description'
 
 const ProfileIcon = () => {
   return (
-    <div className="">
+    <div className="relative">
+      {/* <Coment /> */}
       <Icon />
     </div>
   )

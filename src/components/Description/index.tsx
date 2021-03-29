@@ -1,29 +1,62 @@
 import React from 'react'
 import Link from 'next/link'
+import { faGithub, faTwitter, faDiscord, faSteam } from '@fortawesome/free-brands-svg-icons'
+import type { IconDefinition } from '@fortawesome/free-brands-svg-icons'
+import { Brand } from '../Brand'
 import classes from './Description.module.scss'
 
+type items = {
+  title: string
+  alt: string
+  url: string
+  logo: IconDefinition
+}[]
+
 const Contact = () => {
-  // const list: { [key: string]: string } = {
-  //   Twitter: 'https://twitter.com/mawaru_hana',
-  //   Twitter2: 'https://twitter.com/ivgtr',
-  //   Steam: 'https://steamcommunity.com/id/ivgtr',
-  //   Discord: 'discord:ivgtr#1332',
-  //   Github: 'https://github.com/ivgtr',
-  //   Amazon: 'https://amz.run/3WX9'
-  // }
+  const list: items = [
+    {
+      title: 'Twitter',
+      alt: '@mawaru_hana',
+      url: 'https://twitter.com/mawaru_hana',
+      logo: faTwitter
+    },
+    {
+      title: 'Twitter',
+      alt: '@ivgtr',
+      url: 'https://twitter.com/ivgtr',
+      logo: faTwitter
+    },
+    {
+      title: 'Steam',
+      alt: 'Steam',
+      url: 'https://steamcommunity.com/id/neohgear',
+      logo: faSteam
+    },
+    {
+      title: 'Discord',
+      alt: 'Discord',
+      url: 'discord:ivgtr#1332',
+      logo: faDiscord
+    },
+    {
+      title: 'faGithub',
+      alt: 'Github',
+      url: 'https://github.com/ivgtr',
+      logo: faGithub
+    }
+  ]
+
   return (
     <section className="mt-4">
       <h3 className="text-xl font-bold">Contact</h3>
       <ul className="flex flex-wrap mt-2">
-        <li>
-          <a href="https://twitter.com/mawaru_hana" rel="nofollow">
-            <img
-              src="https://camo.githubusercontent.com/fdd2a610b14de176402083cdd04243bc4f0fcb60997d302b4d4590e0a1533600/68747470733a2f2f696d672e736869656c64732e696f2f747769747465722f666f6c6c6f772f6d61776172755f68616e613f7374796c653d736f6369616c"
-              alt="Twitter Follow"
-              data-canonical-src="https://img.shields.io/twitter/follow/mawaru_hana?style=social"
-            ></img>
-          </a>
-        </li>
+        {list.map((item, index) => {
+          return (
+            <li key={index} className="mr-2 last:mr-0">
+              {<Brand item={item} />}
+            </li>
+          )
+        })}
       </ul>
     </section>
   )
@@ -67,10 +100,11 @@ const About = () => {
               )
             </li>
             <li>
-              コンテンツを消費することが得意
+              趣味
               <ul>
+                <li>ネットサーフィン</li>
                 <li>
-                  漏れ (
+                  その他の漏れ (
                   <Link href="/contents">
                     <a className="hover:underline text-blue-500">More...</a>
                   </Link>

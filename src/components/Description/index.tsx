@@ -29,7 +29,7 @@ const Contact = () => {
     {
       title: 'Steam',
       alt: 'Steam',
-      url: 'https://steamcommunity.com/id/neohgear',
+      url: 'https://steamcommunity.com/id/ivgtr',
       logo: faSteam
     },
     {

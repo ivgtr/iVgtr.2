@@ -14,7 +14,7 @@ type items = {
 }[]
 
 const Contact = () => {
-  const list: items = [
+  const brandList: items = [
     {
       title: 'Twitter',
       alt: '@mawaru_hana',
@@ -56,10 +56,13 @@ const Contact = () => {
   return (
     <section className="mt-4">
       <h2 className="text-xl font-bold">Contact</h2>
-      <ul className={`flex flex-wrap mt-2 ${classes.d}`}>
-        {list.map((item, index) => {
+      <ul className="flex flex-wrap mt-2">
+        {brandList.map((item, i) => {
+          const style = {
+            animationDelay: `${i * 0.1 + 0.3}s`
+          }
           return (
-            <li key={index} className="mr-2 last:mr-0">
+            <li key={i} className={`mr-2 last:mr-0 ${classes.d}`} style={style}>
               {<Brand item={item} />}
             </li>
           )
@@ -77,9 +80,9 @@ const About = () => {
         <li>
           <h3>name</h3>
 
-          <ul className={classes.d}>
+          <ul>
             <li>
-              ねぎ / まわるはな (
+              ねぎ/まわるはな (
               <a
                 href="https://twitter.com/mawaru_hana"
                 target="_blank"
@@ -94,7 +97,7 @@ const About = () => {
         </li>
         <li>
           profile
-          <ul className={classes.d}>
+          <ul>
             <li>
               🎂 96/11/12 (
               <a
@@ -110,7 +113,8 @@ const About = () => {
             <li>
               趣味
               <ul>
-                <li>ネットサーフィン🏄</li>
+                <li>🏄 ネットサーフィン</li>
+                <li>🐔 Twitter</li>
                 <li>
                   <Link href="/contents">
                     <a className="hover:underline text-blue-500">MORE...</a>
@@ -121,7 +125,7 @@ const About = () => {
 
             <li>
               <Link href="/jobs">
-                <a className="hover:underline text-blue-500">仕事</a>
+                <a className="hover:underline text-blue-500">Web Dev</a>
               </Link>
             </li>
           </ul>

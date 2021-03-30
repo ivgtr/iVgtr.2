@@ -4,11 +4,13 @@ import Head from 'next/head'
 import { Container } from '../../components/Container'
 import { Header } from '../../components/Header'
 import { Navigation } from '../../components/Navigation'
+import { JobsContents } from '../../components/JobsContents'
 
 const Main = () => {
   return (
     <Container>
       <Header>JOBS</Header>
+      <JobsContents />
     </Container>
   )
 }

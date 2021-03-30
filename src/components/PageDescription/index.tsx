@@ -55,8 +55,8 @@ const Contact = () => {
 
   return (
     <section className="mt-4">
-      <h3 className="text-xl font-bold">Contact</h3>
-      <ul className="flex flex-wrap mt-2">
+      <h2 className="text-xl font-bold">Contact</h2>
+      <ul className={`flex flex-wrap mt-2 ${classes.d}`}>
         {list.map((item, index) => {
           return (
             <li key={index} className="mr-2 last:mr-0">
@@ -72,11 +72,12 @@ const Contact = () => {
 const About = () => {
   return (
     <section className={`mt-4 ${classes.about}`}>
-      <h3 className="text-xl font-bold">About me</h3>
+      <h2 className="text-xl font-bold">About me</h2>
       <ul>
         <li>
-          name
-          <ul>
+          <h3>name</h3>
+
+          <ul className={classes.d}>
             <li>
               ねぎ / まわるはな (
               <a
@@ -93,7 +94,7 @@ const About = () => {
         </li>
         <li>
           profile
-          <ul>
+          <ul className={classes.d}>
             <li>
               🎂 96/11/12 (
               <a
@@ -133,9 +134,9 @@ const About = () => {
 const Name = () => {
   return (
     <section className="name -ml-2">
-      <h2 className="text-3xl font-bold">
+      <h1 className="text-3xl font-bold">
         <span className="text-2xl mr-1">@</span>iVgtr
-      </h2>
+      </h1>
     </section>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import classes from './Icon.module.scss'
 
 const Glitch: React.VFC<{ src: string; alt: string }> = (props) => {
   const MAX_GLITCH_COUNT = 10
@@ -17,7 +18,7 @@ const Glitch: React.VFC<{ src: string; alt: string }> = (props) => {
       <img
         src={props.src}
         alt={props.alt}
-        className="base w-full h-full object-contain rounded-full"
+        className={`base w-full h-full object-contain rounded-full ${classes.in}`}
       />
       {baseStyle.map((style, i) => {
         return <img style={style} alt="" key={i} />

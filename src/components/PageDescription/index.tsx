@@ -1,9 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 import { faGithub, faTwitter, faDiscord, faSteam } from '@fortawesome/free-brands-svg-icons'
-import type { IconDefinition } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { Brand } from '../Brand'
-import classes from './Description.module.scss'
+import classes from './PageDescription.module.scss'
 
 type items = {
   title: string
@@ -39,10 +40,16 @@ const Contact = () => {
       logo: faDiscord
     },
     {
-      title: 'faGithub',
+      title: 'Github',
       alt: 'Github',
       url: 'https://github.com/ivgtr',
       logo: faGithub
+    },
+    {
+      title: 'MailAddress',
+      alt: 'mail address',
+      url: 'mailto:ivgtr.me@gmail.com',
+      logo: faEnvelope
     }
   ]
 
@@ -102,13 +109,11 @@ const About = () => {
             <li>
               趣味
               <ul>
-                <li>ネットサーフィン</li>
+                <li>ネットサーフィン🏄</li>
                 <li>
-                  その他の漏れ (
                   <Link href="/contents">
-                    <a className="hover:underline text-blue-500">More...</a>
+                    <a className="hover:underline text-blue-500">MORE...</a>
                   </Link>
-                  )
                 </li>
               </ul>
             </li>
@@ -127,7 +132,7 @@ const About = () => {
 
 const Name = () => {
   return (
-    <section className="name -ml-4">
+    <section className="name -ml-2">
       <h2 className="text-3xl font-bold">
         <span className="text-2xl mr-1">@</span>iVgtr
       </h2>
@@ -135,7 +140,7 @@ const Name = () => {
   )
 }
 
-export const Description = () => {
+export const PageDescription = () => {
   return (
     <article className="w-full">
       <Name />

@@ -28,7 +28,7 @@ const Glitch: React.VFC<{ src: string; alt: string }> = (props) => {
 
 export const Icon: React.VFC = () => {
   return (
-    <div className="box-border w-28 h-28 p-1 rounded-full bg-gray-700 dark:bg-gray-100 shadow-md overflow-hidden">
+    <div className="box-border w-28 h-28 p-1 rounded-full bg-gray-700 dark:bg-gray-100 transition-shadow shadow-md hover:shadow-2xl overflow-hidden">
       {/* <img src="/icon.png" alt="伊吹風子" className="w-full h-full object-contain rounded-full" /> */}
       <Glitch src="/icon.png" alt="伊吹風子" />
     </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from '../Icon'
 // import { Coment } from '../Coment'
-import { Description } from '../Description'
+import { PageDescription } from '../PageDescription'
 
 const ProfileIcon = () => {
   return (
@@ -12,19 +12,19 @@ const ProfileIcon = () => {
   )
 }
 
-const ProfileDescription = () => {
+const Description = () => {
   return (
     <div className="m-3 mt-8 sm:mt-3 box-border sm:ml-16 max-w-xs">
-      <Description />
+      <PageDescription />
     </div>
   )
 }
 
-export const Profle: React.VFC = () => {
+export const Profile: React.VFC = () => {
   return (
     <div className="sm:flex flex-wrap items-center justify-center flex-col sm:flex-row py-16 px-4">
       <ProfileIcon />
-      <ProfileDescription />
+      <Description />
     </div>
   )
 }

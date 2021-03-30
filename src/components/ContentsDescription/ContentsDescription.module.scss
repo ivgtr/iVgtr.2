@@ -1,0 +1,8 @@
+.text {
+  &::first-letter {
+    float: left;
+    padding-right: 5px;
+    font-size: 2.5em;
+    line-height: 1.2;
+  }
+}

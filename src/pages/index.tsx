@@ -1,12 +1,12 @@
 import React from 'react'
-import { Container } from '../components/Container'
-import { Profle } from '../components/Profle'
+import { Box } from '../components/Box'
+import { Profile } from '../components/Profile'
 
 const Home = () => {
   return (
-    <Container>
-      <Profle />
-    </Container>
+    <Box>
+      <Profile />
+    </Box>
   )
 }
 

@@ -119,7 +119,7 @@ export const JobsContents = () => {
   return (
     <div>
       <h2 className="text-xl font-bold">Web Developer</h2>
-      <p>Front-End Enginner</p>
+      <p>Front-End Engineer</p>
       <article>
         <section className="mt-8">
           <h3 className="font-bold">Skills</h3>

@@ -31,7 +31,7 @@ import classes from './Icon.module.scss'
 export const Icon: React.VFC = () => {
   return (
     <div className="box-border w-28 h-28 p-1 rounded-full bg-gray-700 dark:bg-gray-100 transition-shadow shadow-md hover:shadow-2xl overflow-hidden">
-      <Image src="/icon.png" width={200} height={200} className={classes.in} />
+      <Image src="/icon.png" width={200} height={200} className={classes.in} alt="伊吹風子" />
       {/* <Glitch src="/icon.png" alt="伊吹風子" /> */}
     </div>
   )

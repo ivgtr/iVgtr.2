@@ -1,29 +1,25 @@
-.in {
-  animation: scaleInDown 0.3s ease-in-out 0.1s backwards;
+.base {
+  top: 0;
+  left: 0;
+  clip-path: polygon(
+    0% var(--gi-clip-top, 0%),
+    100% var(--gi-clip-top, 0%),
+    100% var(--gi-clip-bottom, 100%),
+    0% var(--gi-clip-bottom, 100%)
+  );
 }
 
-@keyframes scaleInDown {
-  from,
-  0%,
-  60%,
-  75% {
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
+.glitch {
+  left: var(--left, 0);
+  filter: blur(1px) brightness(1.1);
+}
 
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-    transform: rotate(15deg);
-  }
+.red {
+  filter: blur(1px) hue-rotate(310deg);
+  transform: translateX(5px);
+}
 
-  60% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-
-  75%,
-  to {
-    transform: scale(1);
-    transform: rotate(0deg);
-  }
+.blue {
+  filter: blur(1px) hue-rotate(230deg);
+  transform: translateX(-5px);
 }

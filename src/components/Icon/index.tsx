@@ -204,10 +204,10 @@ const Glitch: React.VFC<Image> = (props) => {
   )
 }
 
-export const Icon: React.VFC = () => {
+export const Icon = React.memo(function Icon() {
   return (
     <div className="box-border w-28 h-28 p-1 rounded-full bg-gray-700 dark:bg-gray-100 transition-shadow shadow-md hover:shadow-2xl overflow-hidden">
       <Glitch src="/icon.png" alt="伊吹風子" />
     </div>
   )
-}
+})

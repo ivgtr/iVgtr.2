@@ -1,12 +1,8 @@
+import classNames from 'classnames'
 import React from 'react'
 import classes from './JobsContents.module.scss'
 
 const worksList = [
-  {
-    url: 'https://github.com/ivgtr/iVgtr.2',
-    title: 'iVgtr.2',
-    description: 'ポートフォリオサイトv2(このサイト)'
-  },
   {
     url: 'https://github.com/ivgtr/twcl',
     title: 'twcl',
@@ -36,11 +32,6 @@ const worksList = [
     url: 'https://github.com/ivgtr/i2Color',
     title: 'i2Color',
     description: '画像から特徴色を抽出し表示するサイト'
-  },
-  {
-    url: 'https://github.com/ivgtr/iVgtr.1',
-    title: 'iVgtr.1',
-    description: 'ポートフォリオサイトv1'
   }
 ]
 
@@ -96,13 +87,14 @@ const Works = () => {
         return (
           <li className="mt-4" key={i}>
             <p className="font-bold">
+              {item.title}{' '}
               <a
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline text-blue-500"
               >
-                {item.title}
+                (Github)
               </a>
             </p>
             <ul>
@@ -119,14 +111,26 @@ export const JobsContents = () => {
   return (
     <div>
       <h2 className="text-xl font-bold">Web Developer</h2>
-      <p>Front-End Engineer</p>
+      <p>🌈 ｵﾀｸらしくﾌﾟﾛｸﾞﾗﾐﾝｸﾞとかをしてる</p>
       <article>
         <section className="mt-8">
           <h3 className="font-bold">Skills</h3>
           <Skills />
         </section>
-        <section className={`mt-8 ${classes.list}`}>
+        <section className={classNames('mt-8', classes.list)}>
           <h3 className="font-bold">Works</h3>
+          <p>
+            全て
+            <a
+              href="https://github.com/ivgtr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline text-blue-500"
+            >
+              Github
+            </a>
+            にあげてる
+          </p>
           <Works />
         </section>
       </article>

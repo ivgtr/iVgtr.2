@@ -1,9 +1,9 @@
-import React from 'react'
 import Head from 'next/head'
-
+import React from 'react'
 import { Container } from '../../components/Container'
-import { ContentsList } from '../../components/ContentsList'
 import { ContentsDescription } from '../../components/ContentsDescription'
+import { ContentsLink } from '../../components/ContentsLink'
+import { ContentsList } from '../../components/ContentsList'
 import { Header } from '../../components/Header'
 import { Navigation } from '../../components/Navigation'
 
@@ -11,8 +11,11 @@ const Main = () => {
   return (
     <Container>
       <Header>more...</Header>
-      <ContentsDescription />
-      <ContentsList />
+      <article>
+        <ContentsDescription />
+        <ContentsLink />
+        <ContentsList />
+      </article>
     </Container>
   )
 }

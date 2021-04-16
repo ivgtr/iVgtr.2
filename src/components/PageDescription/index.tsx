@@ -1,58 +1,59 @@
-import React from 'react'
-import Link from 'next/link'
-import { faGithub, faTwitter, faDiscord, faSteam } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { faDiscord, faGithub, faSteam, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import classNames from 'classnames'
+import Link from 'next/link'
+import React from 'react'
 import { Brand } from '../Brand'
 import classes from './PageDescription.module.scss'
 
-type items = {
+type Item = {
   title: string
   alt: string
   url: string
   logo: IconDefinition
-}[]
+}
+
+const brandList: Item[] = [
+  {
+    title: 'Twitter',
+    alt: '@mawaru_hana',
+    url: 'https://twitter.com/mawaru_hana',
+    logo: faTwitter
+  },
+  {
+    title: 'Twitter',
+    alt: '@ivgtr',
+    url: 'https://twitter.com/ivgtr',
+    logo: faTwitter
+  },
+  {
+    title: 'Steam',
+    alt: 'Steam',
+    url: 'https://steamcommunity.com/id/ivgtr',
+    logo: faSteam
+  },
+  {
+    title: 'Discord',
+    alt: 'Discord',
+    url: 'discord:ivgtr#1332',
+    logo: faDiscord
+  },
+  {
+    title: 'Github',
+    alt: 'Github',
+    url: 'https://github.com/ivgtr',
+    logo: faGithub
+  },
+  {
+    title: 'MailAddress',
+    alt: 'mail address',
+    url: 'mailto:ivgtr.me@gmail.com',
+    logo: faEnvelope
+  }
+]
 
 const Contact = () => {
-  const brandList: items = [
-    {
-      title: 'Twitter',
-      alt: '@mawaru_hana',
-      url: 'https://twitter.com/mawaru_hana',
-      logo: faTwitter
-    },
-    {
-      title: 'Twitter',
-      alt: '@ivgtr',
-      url: 'https://twitter.com/ivgtr',
-      logo: faTwitter
-    },
-    {
-      title: 'Steam',
-      alt: 'Steam',
-      url: 'https://steamcommunity.com/id/ivgtr',
-      logo: faSteam
-    },
-    {
-      title: 'Discord',
-      alt: 'Discord',
-      url: 'discord:ivgtr#1332',
-      logo: faDiscord
-    },
-    {
-      title: 'Github',
-      alt: 'Github',
-      url: 'https://github.com/ivgtr',
-      logo: faGithub
-    },
-    {
-      title: 'MailAddress',
-      alt: 'mail address',
-      url: 'mailto:ivgtr.me@gmail.com',
-      logo: faEnvelope
-    }
-  ]
-
   return (
     <section className="mt-4">
       <h2 className="text-xl font-bold">Contact</h2>
@@ -62,7 +63,7 @@ const Contact = () => {
             animationDelay: `${i * 0.1 + 0.3}s`
           }
           return (
-            <li key={i} className={`mr-2 last:mr-0 ${classes.d}`} style={style}>
+            <li key={i} className={classNames('mr-2 last:mr-0', classes.d)} style={style}>
               {<Brand item={item} />}
             </li>
           )
@@ -74,7 +75,7 @@ const Contact = () => {
 
 const About = () => {
   return (
-    <section className={`mt-4 ${classes.about}`}>
+    <section className={classNames('mt-4', classes.about)}>
       <h2 className="text-xl font-bold">About me</h2>
       <ul>
         <li>
@@ -82,16 +83,10 @@ const About = () => {
 
           <ul>
             <li>
-              ねぎ/まわるはな (
-              <a
-                href="https://twitter.com/mawaru_hana"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline text-blue-500"
-              >
-                @mawaru_hana
-              </a>
-              )
+              ねぎ/まわるはな{' '}
+              <span className={classNames('inline-block cursor-default', classes.s)}>
+                (@mawaru_hana)
+              </span>
             </li>
           </ul>
         </li>
@@ -125,7 +120,7 @@ const About = () => {
 
             <li>
               <Link href="/jobs">
-                <a className="hover:underline text-blue-500">Web Dev</a>
+                <a className="hover:underline text-blue-500">お仕事</a>
               </Link>
             </li>
           </ul>

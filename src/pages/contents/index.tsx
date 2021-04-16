@@ -10,7 +10,12 @@ import { Navigation } from '../../components/Navigation'
 const Me = () => {
   return (
     <section className="mt-8">
-      <h2 className="text-xl font-bold">iVgtr?</h2>
+      <h2 className="text-xl font-bold">
+        iVgtr
+        <sup>
+          [<i>?</i>]
+        </sup>
+      </h2>
       <p>
         <a
           href="https://twitter.com/mawaru_hana"
@@ -20,11 +25,10 @@ const Me = () => {
         >
           𝑻𝒘𝒊𝒕𝒕𝒆𝒓
         </a>
-        の通りに生きてます。
+        の通りに生きてる。
       </p>
-      <p>
-        元々ねぎとろという名前でｲﾝﾀｰﾈｯﾄをやっていたので、ねぎとろ=ngtr=ivgtrと使い分けて名乗ってます。
-      </p>
+      <p>ｺﾝﾋﾟｭｰﾀｰと🌈 が好き。</p>
+      <p>好きなもの以外に興味が向かない。</p>
     </section>
   )
 }

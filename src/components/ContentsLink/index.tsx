@@ -24,8 +24,8 @@ const links: Link[] = [
 
 export const ContentsLink = () => {
   return (
-    <div className="mt-2">
-      <p className="text-3l font-bold">review</p>
+    <div className="mt-4">
+      <p className="text-3l font-bold">レビューとか</p>
 
       <ul className="mt-4">
         {links.map((item, i) => {

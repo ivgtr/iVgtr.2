@@ -4,8 +4,8 @@ import classes from './ContentsList.module.scss'
 
 export const ContentsList = () => {
   return (
-    <section className={classNames('mt-8', classes.list)}>
-      <h2 className="text-xl font-bold">好きなものたち</h2>
+    <div className={classNames('mt-4', classes.list)}>
+      <p className="text-3l font-bold">一覧</p>
 
       <ul>
         <li className="mt-4">
@@ -55,6 +55,6 @@ export const ContentsList = () => {
           </ul>
         </li>
       </ul>
-    </section>
+    </div>
   )
 }

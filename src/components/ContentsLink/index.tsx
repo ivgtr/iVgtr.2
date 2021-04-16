@@ -24,8 +24,8 @@ const links: Link[] = [
 
 export const ContentsLink = () => {
   return (
-    <section className="mt-12">
-      <h2 className="text-xl font-bold">review</h2>
+    <div className="mt-2">
+      <p className="text-3l font-bold">review</p>
 
       <ul className="mt-4">
         {links.map((item, i) => {
@@ -43,6 +43,6 @@ export const ContentsLink = () => {
           )
         })}
       </ul>
-    </section>
+    </div>
   )
 }

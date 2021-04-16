@@ -60,7 +60,7 @@ const Contact = () => {
       <ul className="flex flex-wrap mt-2">
         {brandList.map((item, i) => {
           const style = {
-            animationDelay: `${i * 0.1 + 0.3}s`
+            animationDelay: `${i * 0.1 + 0.2}s`
           }
           return (
             <li key={i} className={classNames('mr-2 last:mr-0', classes.d)} style={style}>
@@ -134,7 +134,7 @@ const Name = () => {
   return (
     <section className="name -ml-2">
       <h1 className="text-3xl font-bold">
-        <span className="text-2xl mr-1">@</span>iVgtr
+        iVgtr.<span className="text-2xl">me</span>
       </h1>
     </section>
   )

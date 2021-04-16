@@ -7,14 +7,45 @@ import { ContentsList } from '../../components/ContentsList'
 import { Header } from '../../components/Header'
 import { Navigation } from '../../components/Navigation'
 
+const Me = () => {
+  return (
+    <section className="mt-8">
+      <h2 className="text-xl font-bold">iVgtr?</h2>
+      <p>
+        <a
+          href="https://twitter.com/mawaru_hana"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline text-blue-500"
+        >
+          𝑻𝒘𝒊𝒕𝒕𝒆𝒓
+        </a>
+        の通りに生きてます。
+      </p>
+      <p>
+        元々ねぎとろという名前でｲﾝﾀｰﾈｯﾄをやっていたので、ねぎとろ=ngtr=ivgtrと使い分けて名乗ってます。
+      </p>
+    </section>
+  )
+}
+const Otaku = () => {
+  return (
+    <section className="mt-8">
+      <h2 className="text-xl font-bold">好きなものたち</h2>
+      <ContentsLink />
+      <ContentsList />
+    </section>
+  )
+}
+
 const Main = () => {
   return (
     <Container>
       <Header>more...</Header>
       <article>
         <ContentsDescription />
-        <ContentsLink />
-        <ContentsList />
+        <Me />
+        <Otaku />
       </article>
     </Container>
   )

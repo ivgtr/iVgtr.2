@@ -96,6 +96,7 @@ const Glitch: React.VFC<Image> = (props) => {
   })
 
   const clearGlitch = () => {
+    if (!isEnabled.current) return
     const glitchWidth = []
     const glitchTop = []
     const glitchLeft = []
@@ -122,6 +123,7 @@ const Glitch: React.VFC<Image> = (props) => {
     glitchTop: number[]
     glitchLeft: number[]
   }) => {
+    if (!isEnabled.current) return
     setGlitchItem({
       glitchWidth,
       glitchLeft,
@@ -204,10 +206,10 @@ const Glitch: React.VFC<Image> = (props) => {
   )
 }
 
-export const Icon = React.memo(function Icon() {
+export const Icon: React.VFC = () => {
   return (
     <div className="box-border w-28 h-28 p-1 rounded-full bg-gray-700 dark:bg-gray-100 transition-shadow shadow-md hover:shadow-2xl overflow-hidden">
       <Glitch src="/icon.png" alt="伊吹風子" />
     </div>
   )
-})
+}

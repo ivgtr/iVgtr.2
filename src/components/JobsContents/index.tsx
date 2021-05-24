@@ -1,39 +1,16 @@
 import classNames from 'classnames'
+import dayjs from 'dayjs'
 import React from 'react'
 import classes from './JobsContents.module.scss'
 
-const worksList = [
-  {
-    url: 'https://github.com/ivgtr/twcl',
-    title: 'twcl',
-    description: 'Node.js で作られたCLI上のTwitterクライアント'
-  },
-  {
-    url: 'https://github.com/ivgtr/aikatsu-btn',
-    title: 'aikatsu-btn',
-    description: 'アイカツ!格言を聞けるボタンのサイト'
-  },
-  {
-    url: 'https://github.com/ivgtr/aikatsu-cli',
-    title: 'aikatsu-cli',
-    description: 'アイカツ!格言を再生するCL!ツール'
-  },
-  {
-    url: 'https://github.com/ivgtr/node-alltweets',
-    title: 'node-alltweets',
-    description: 'Node.js を使って誰かの全ツイート(直近3200ツイート)をダウンロードします'
-  },
-  {
-    url: 'https://github.com/ivgtr/luv-t-archive',
-    title: 'luv-t-archive',
-    description: 'Twitter でふぁぼったツイートを定期的に、自動で保存します'
-  },
-  {
-    url: 'https://github.com/ivgtr/i2Color',
-    title: 'i2Color',
-    description: '画像から特徴色を抽出し表示するサイト'
-  }
-]
+type Repository = {
+  title: string
+  url: string
+  description: string
+  update: string
+}
+
+type Repositories = Repository[]
 
 const badgesList = [
   {
@@ -80,7 +57,7 @@ const Skills = () => {
   )
 }
 
-const Works = () => {
+const Works: React.VFC<{ worksList: Repositories }> = ({ worksList }) => {
   return (
     <ul>
       {worksList.map((item, i) => {
@@ -99,6 +76,7 @@ const Works = () => {
             </p>
             <ul>
               <li>{item.description}</li>
+              <li>update: {dayjs(item.update).format('YYYY-MM-DD')}</li>
             </ul>
           </li>
         )
@@ -107,7 +85,7 @@ const Works = () => {
   )
 }
 
-export const JobsContents = () => {
+export const JobsContents: React.VFC<{ worksList: Repositories }> = ({ worksList }) => {
   return (
     <div>
       <h2 className="text-xl font-bold">Web Developer</h2>
@@ -131,7 +109,7 @@ export const JobsContents = () => {
             </a>
             にあげてる
           </p>
-          <Works />
+          <Works worksList={worksList} />
         </section>
       </article>
     </div>

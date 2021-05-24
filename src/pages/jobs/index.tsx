@@ -1,21 +1,32 @@
-import React from 'react'
+import { InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
-
+import React from 'react'
 import { Container } from '../../components/Container'
 import { Header } from '../../components/Header'
-import { Navigation } from '../../components/Navigation'
 import { JobsContents } from '../../components/JobsContents'
+import { Navigation } from '../../components/Navigation'
 
-const Main = () => {
+type Repository = {
+  title: string
+  url: string
+  description: string
+  update: string
+}
+
+type Repositories = Repository[]
+
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+const Main: React.VFC<{ worksList: Repositories }> = ({ worksList }) => {
   return (
     <Container>
       <Header>JOBS</Header>
-      <JobsContents />
+      <JobsContents worksList={worksList} />
     </Container>
   )
 }
 
-const Jobs = () => {
+const Jobs: NextPage<Props> = ({ worksList }) => {
   const title = 'WORKS'
 
   return (
@@ -27,10 +38,30 @@ const Jobs = () => {
       </Head>
       <div>
         <Navigation />
-        <Main />
+        <Main worksList={worksList} />
       </div>
     </>
   )
 }
 
 export default Jobs
+
+export const getStaticProps = async () => {
+  const endpoint = process.env.GOOGLE_API_URL
+  const authKey = process.env.AUTH_KEY
+
+  const res = await fetch(`${endpoint}?auth_key=${authKey}`, { redirect: 'follow' })
+  const json: Repositories = await res.json()
+  const worksList = [...json].sort((a, b) => {
+    if (new Date(a.update) > new Date(b.update)) {
+      return -1
+    } else {
+      return 1
+    }
+  })
+
+  return {
+    props: { worksList },
+    revalidate: 60 * 60 * 3
+  }
+}

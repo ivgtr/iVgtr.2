@@ -53,7 +53,7 @@ const brandList: Item[] = [
   }
 ]
 
-const Contact = () => {
+export const Contact = () => {
   return (
     <section className="mt-4">
       <h2 className="text-xl font-bold">Contact</h2>
@@ -82,12 +82,7 @@ const About = () => {
           <h3>name</h3>
 
           <ul>
-            <li>
-              ねぎ/まわるはな{' '}
-              <span className={classNames('inline-block cursor-default', classes.s)}>
-                (@mawaru_hana)
-              </span>
-            </li>
+            <li>ねぎ/まわるはな</li>
           </ul>
         </li>
         <li>
@@ -130,7 +125,7 @@ const About = () => {
   )
 }
 
-const Name = () => {
+export const Name = () => {
   return (
     <section className="name -ml-2">
       <h1 className="text-3xl font-bold">

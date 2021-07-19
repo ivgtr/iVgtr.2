@@ -1,10 +1,10 @@
-import classNames from 'classnames'
-import React from 'react'
-import classes from './ContentsList.module.scss'
+import classNames from "classnames";
+import React from "react";
+import classes from "./ContentsList.module.scss";
 
 export const ContentsList = () => {
   return (
-    <div className={classNames('mt-4', classes.list)}>
+    <div className={classNames("mt-4", classes.list)}>
       <p className="text-3l font-bold">一覧</p>
 
       <ul>
@@ -56,5 +56,5 @@ export const ContentsList = () => {
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};

@@ -1,5 +1,5 @@
-import React from 'react'
-import classes from './ContentsDescription.module.scss'
+import React from "react";
+import classes from "./ContentsDescription.module.scss";
 
 export const ContentsDescription = () => {
   return (
@@ -11,5 +11,5 @@ export const ContentsDescription = () => {
         </sup>
       </h2>
     </section>
-  )
-}
+  );
+};

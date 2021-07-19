@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import React from 'react'
-import { Container } from '../../components/Container'
-import { ContentsDescription } from '../../components/ContentsDescription'
-import { ContentsLink } from '../../components/ContentsLink'
-import { ContentsList } from '../../components/ContentsList'
-import { Header } from '../../components/Header'
-import { Navigation } from '../../components/Navigation'
+import Head from "next/head";
+import React from "react";
+import { Container } from "../../components/Container";
+import { ContentsDescription } from "../../components/ContentsDescription";
+import { ContentsLink } from "../../components/ContentsLink";
+import { ContentsList } from "../../components/ContentsList";
+import { Header } from "../../components/Header";
+import { Navigation } from "../../components/Navigation";
 
 const Me = () => {
   return (
@@ -30,8 +30,8 @@ const Me = () => {
       <p>ｺﾝﾋﾟｭｰﾀｰと🌈 が好き。</p>
       <p>好きなもの以外に興味が向かない。</p>
     </section>
-  )
-}
+  );
+};
 const Otaku = () => {
   return (
     <section className="mt-8">
@@ -39,8 +39,8 @@ const Otaku = () => {
       <ContentsLink />
       <ContentsList />
     </section>
-  )
-}
+  );
+};
 
 const Main = () => {
   return (
@@ -52,11 +52,11 @@ const Main = () => {
         <Otaku />
       </article>
     </Container>
-  )
-}
+  );
+};
 
 const Contents = () => {
-  const title = '漏れ'
+  const title = "漏れ";
 
   return (
     <>
@@ -70,7 +70,7 @@ const Contents = () => {
         <Main />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Contents
+export default Contents;

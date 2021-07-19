@@ -1,14 +1,15 @@
-import { config, dom } from "@fortawesome/fontawesome-svg-core";
-import { AppProps } from "next/app";
-import Head from "next/head";
-import * as React from "react";
-import "../assets/styles/styles.scss";
+import * as React from 'react'
+import { AppProps } from 'next/app'
+import Head from 'next/head'
+import { config, dom } from '@fortawesome/fontawesome-svg-core'
 
-config.autoAddCss = false;
+import '../assets/styles/styles.scss'
+
+config.autoAddCss = false
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const title = "iVgtr.me";
-  const description = "卵の殻を破らねば、雛鳥は生まれずに死んでいく。";
+  const title = 'iVgtr.me'
+  const description = '卵の殻を破らねば、雛鳥は生まれずに死んでいく。'
 
   return (
     <>
@@ -29,7 +30,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
       <Component {...pageProps} />
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

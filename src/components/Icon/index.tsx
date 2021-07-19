@@ -1,58 +1,58 @@
-import classnames from "classnames";
-import React, { useEffect, useRef, useState } from "react";
-import classes from "./Icon.module.scss";
+import classnames from 'classnames'
+import React, { useEffect, useRef, useState } from 'react'
+import classes from './Icon.module.scss'
 
-const INITIAL_WAIT_TIME = 100;
-const CLEAR_TIME = 100;
-const MAX_GLITCH_COUNT = 7;
-const MAX_GLITCH_SEQUENCE_COUNT = 5;
-const MAX_GLITCH_FREQUENCY_MS = 2000;
-const MAX_GLITCH_WIDTH = 5;
-const OFFSET_GLITCH_WIDTH = 5;
-const MAX_GLITCH_LEFT = 20;
+const INITIAL_WAIT_TIME = 100
+const CLEAR_TIME = 100
+const MAX_GLITCH_COUNT = 7
+const MAX_GLITCH_SEQUENCE_COUNT = 5
+const MAX_GLITCH_FREQUENCY_MS = 2000
+const MAX_GLITCH_WIDTH = 5
+const OFFSET_GLITCH_WIDTH = 5
+const MAX_GLITCH_LEFT = 20
 
-type Image = { src: string; alt: string };
+type Image = { src: string; alt: string }
 
 interface Style extends React.CSSProperties {
-  "--gi-clip-top": string;
-  "--gi-clip-bottom": string;
-  "--left"?: string;
+  '--gi-clip-top': string
+  '--gi-clip-bottom': string
+  '--left'?: string
 }
 
 type GlitchSet = {
-  glitchWidth: number[];
-  glitchTop: number[];
-  glitchLeft: number[];
-};
+  glitchWidth: number[]
+  glitchTop: number[]
+  glitchLeft: number[]
+}
 
 const GlitchImage: React.VFC<{ glitch: GlitchSet; src: string; glitchCount: number }> = (props) => {
-  const baseStyle = useRef<Style[]>([]);
-  const glitchStyle = useRef<Style[]>([]);
+  const baseStyle = useRef<Style[]>([])
+  const glitchStyle = useRef<Style[]>([])
 
   if (props.glitch.glitchWidth) {
     baseStyle.current = [...Array(props.glitchCount + 1)].map((_, i) => {
       const clipTop =
         i > 0 && i <= props.glitch.glitchTop.length
           ? props.glitch.glitchTop[i - 1] + props.glitch.glitchWidth[i - 1]
-          : 0;
-      const clipBottom = i < props.glitch.glitchTop.length ? props.glitch.glitchTop[i] : 100;
+          : 0
+      const clipBottom = i < props.glitch.glitchTop.length ? props.glitch.glitchTop[i] : 100
 
       return {
-        "--gi-clip-top": `${clipTop}%`,
-        "--gi-clip-bottom": `${clipBottom}%`,
-      };
-    });
+        '--gi-clip-top': `${clipTop}%`,
+        '--gi-clip-bottom': `${clipBottom}%`
+      }
+    })
 
     glitchStyle.current = [...Array(props.glitchCount)].map((_, i) => {
-      const clipTop = props.glitch.glitchTop[i];
-      const clipBottom = props.glitch.glitchTop[i] + props.glitch.glitchWidth[i];
+      const clipTop = props.glitch.glitchTop[i]
+      const clipBottom = props.glitch.glitchTop[i] + props.glitch.glitchWidth[i]
 
       return {
-        "--gi-clip-top": `${clipTop}%`,
-        "--gi-clip-bottom": `${clipBottom}%`,
-        "--left": `${props.glitch.glitchLeft[i]}px`,
-      };
-    });
+        '--gi-clip-top': `${clipTop}%`,
+        '--gi-clip-bottom': `${clipBottom}%`,
+        '--left': `${props.glitch.glitchLeft[i]}px`
+      }
+    })
   }
 
   return (
@@ -60,139 +60,139 @@ const GlitchImage: React.VFC<{ glitch: GlitchSet; src: string; glitchCount: numb
       {baseStyle.current.map((style, i) => (
         <img
           src={props.src}
-          className={classnames("base-image", { [classes.base]: true, absolute: true })}
+          className={classnames('base-image', { [classes.base]: true, absolute: true })}
           style={style}
           key={i}
         />
       ))}
       {glitchStyle.current.map((style, i) => {
-        const hueSeed = Math.random();
+        const hueSeed = Math.random()
         return (
           <img
             src={props.src}
-            className={classnames("base-image absolute glitch", {
+            className={classnames('base-image absolute glitch', {
               [classes.base]: true,
               [classes.glitch]: true,
               [classes.red]: hueSeed < 0.2,
-              [classes.blue]: hueSeed > 0.8,
+              [classes.blue]: hueSeed > 0.8
             })}
             style={style}
             key={i}
           />
-        );
+        )
       })}
     </>
-  );
-};
+  )
+}
 
 const Glitch: React.VFC<Image> = (props) => {
-  const isEnabled = useRef<boolean>(false);
-  const glitchCount = useRef<number>(0);
-  const glitchSequenceCount = useRef<number>(0);
+  const isEnabled = useRef<boolean>(false)
+  const glitchCount = useRef<number>(0)
+  const glitchSequenceCount = useRef<number>(0)
   const [glitchItem, setGlitchItem] = useState<GlitchSet>({
     glitchWidth: [],
     glitchLeft: [],
-    glitchTop: [],
-  });
+    glitchTop: []
+  })
 
   const clearGlitch = () => {
-    if (!isEnabled.current) return;
-    const glitchWidth = [];
-    const glitchTop = [];
-    const glitchLeft = [];
+    if (!isEnabled.current) return
+    const glitchWidth = []
+    const glitchTop = []
+    const glitchLeft = []
 
     for (let i = 0; i < glitchCount.current; i++) {
-      glitchWidth[i] = 0;
-      glitchTop[i] = 0;
-      glitchLeft[i] = 0;
+      glitchWidth[i] = 0
+      glitchTop[i] = 0
+      glitchLeft[i] = 0
     }
 
     setGlitchItem({
       glitchWidth,
       glitchLeft,
-      glitchTop,
-    });
-  };
+      glitchTop
+    })
+  }
 
   const setGlitch = ({
     glitchWidth,
     glitchLeft,
-    glitchTop,
+    glitchTop
   }: {
-    glitchWidth: number[];
-    glitchTop: number[];
-    glitchLeft: number[];
+    glitchWidth: number[]
+    glitchTop: number[]
+    glitchLeft: number[]
   }) => {
-    if (!isEnabled.current) return;
+    if (!isEnabled.current) return
     setGlitchItem({
       glitchWidth,
       glitchLeft,
-      glitchTop,
-    });
-  };
+      glitchTop
+    })
+  }
 
   const pickRandomFromRange = (min: number, max: number) => {
-    return Math.random() * (max - min + 1) + min;
-  };
+    return Math.random() * (max - min + 1) + min
+  }
 
   const makeGlitch = () => {
-    const glitchWidth: number[] = [];
-    const glitchTop: number[] = [];
-    const glitchLeft: number[] = [];
+    const glitchWidth: number[] = []
+    const glitchTop: number[] = []
+    const glitchLeft: number[] = []
 
     for (let i = 0; i < glitchCount.current; i++) {
-      glitchWidth[i] = Math.random() * MAX_GLITCH_WIDTH + OFFSET_GLITCH_WIDTH;
+      glitchWidth[i] = Math.random() * MAX_GLITCH_WIDTH + OFFSET_GLITCH_WIDTH
       glitchTop[i] = pickRandomFromRange(
         i === 0 ? 0 : glitchTop[i - 1] + glitchWidth[i - 1],
         100 - (MAX_GLITCH_WIDTH + OFFSET_GLITCH_WIDTH)
-      );
-      Math.random() * (100 - MAX_GLITCH_WIDTH + OFFSET_GLITCH_WIDTH);
-      glitchLeft[i] = Math.random() * (2 * MAX_GLITCH_LEFT) - MAX_GLITCH_LEFT;
+      )
+      Math.random() * (100 - MAX_GLITCH_WIDTH + OFFSET_GLITCH_WIDTH)
+      glitchLeft[i] = Math.random() * (2 * MAX_GLITCH_LEFT) - MAX_GLITCH_LEFT
     }
 
-    return { glitchWidth, glitchTop, glitchLeft };
-  };
+    return { glitchWidth, glitchTop, glitchLeft }
+  }
 
   const startGlitch = () => {
-    if (!isEnabled.current) return;
+    if (!isEnabled.current) return
 
-    const glitchWaitTime: number[] = [];
-    glitchCount.current = Math.floor(Math.random() * MAX_GLITCH_COUNT) + 1;
-    glitchSequenceCount.current = Math.floor(Math.random() * MAX_GLITCH_SEQUENCE_COUNT) + 1;
+    const glitchWaitTime: number[] = []
+    glitchCount.current = Math.floor(Math.random() * MAX_GLITCH_COUNT) + 1
+    glitchSequenceCount.current = Math.floor(Math.random() * MAX_GLITCH_SEQUENCE_COUNT) + 1
 
     for (let i = 0; i < glitchSequenceCount.current; i++) {
-      const delaySeed = i + 1;
-      glitchWaitTime[i] = Math.random() * (100 * delaySeed) + 100;
+      const delaySeed = i + 1
+      glitchWaitTime[i] = Math.random() * (100 * delaySeed) + 100
 
       setTimeout(() => {
-        setGlitch(makeGlitch());
-      }, glitchWaitTime[i]);
+        setGlitch(makeGlitch())
+      }, glitchWaitTime[i])
     }
 
-    const maxWaitTime = Math.max.apply(null, glitchWaitTime);
-    const clearTime = maxWaitTime + CLEAR_TIME;
+    const maxWaitTime = Math.max.apply(null, glitchWaitTime)
+    const clearTime = maxWaitTime + CLEAR_TIME
 
     setTimeout(() => {
-      clearGlitch();
-    }, clearTime);
+      clearGlitch()
+    }, clearTime)
 
     setTimeout(() => {
-      startGlitch();
-    }, Math.random() * MAX_GLITCH_FREQUENCY_MS + clearTime);
-  };
+      startGlitch()
+    }, Math.random() * MAX_GLITCH_FREQUENCY_MS + clearTime)
+  }
 
   useEffect(() => {
-    clearGlitch();
-    isEnabled.current = true;
+    clearGlitch()
+    isEnabled.current = true
 
     setTimeout(() => {
-      startGlitch();
-    }, INITIAL_WAIT_TIME);
+      startGlitch()
+    }, INITIAL_WAIT_TIME)
 
     return () => {
-      isEnabled.current = false;
-    };
-  }, []);
+      isEnabled.current = false
+    }
+  }, [])
 
   return (
     <div className="relative rounded-full w-full h-full overflow-hidden">
@@ -203,13 +203,13 @@ const Glitch: React.VFC<Image> = (props) => {
       />
       <GlitchImage glitchCount={glitchCount.current} glitch={glitchItem} src={props.src} />
     </div>
-  );
-};
+  )
+}
 
 export const Icon: React.VFC = () => {
   return (
     <div className="box-border w-28 h-28 p-1 rounded-full bg-gray-700 dark:bg-gray-100 transition-shadow shadow-md hover:shadow-2xl overflow-hidden">
       <Glitch src="/icon.png" alt="伊吹風子" />
     </div>
-  );
-};
+  )
+}

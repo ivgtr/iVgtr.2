@@ -1,12 +1,12 @@
-import classNames from "classnames";
-import React from "react";
-import classes from "./Coment.module.scss";
+import classNames from 'classnames'
+import React from 'react'
+import classes from './Coment.module.scss'
 
 export const Coment = () => {
   return (
     <div
       className={classNames(
-        "absolute transform top-1/2 -translate-y-1/2 sm:-top-12 left-36 sm:left-1/2 sm:-translate-x-1/2 bg-gray-700 dark:bg-gray-100 rounded-md",
+        'absolute transform top-1/2 -translate-y-1/2 sm:-top-12 left-36 sm:left-1/2 sm:-translate-x-1/2 bg-gray-700 dark:bg-gray-100 rounded-md',
         classes.coment
       )}
     >
@@ -16,5 +16,5 @@ export const Coment = () => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}

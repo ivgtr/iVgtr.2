@@ -1,8 +1,7 @@
-import * as React from 'react'
+import { config, dom } from '@fortawesome/fontawesome-svg-core'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { config, dom } from '@fortawesome/fontawesome-svg-core'
-
+import React from 'react'
 import '../assets/styles/styles.scss'
 
 config.autoAddCss = false

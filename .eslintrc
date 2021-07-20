@@ -2,7 +2,7 @@
   "extends": [
     "eslint-config-sumikko",
     "eslint-config-sumikko/ts",
-    "eslint-config-sumikko/react",
+    "next",
     "eslint-config-sumikko/prettier"
   ],
   "rules": {

@@ -1,12 +1,14 @@
 import React from "react";
+import { Fukidashi } from "../Fukidashi";
 import { Icon } from "../Icon";
-// import { Coment } from '../Coment'
 import { PageDescription } from "../PageDescription";
 
 const ProfileIcon = () => {
+  const text = "にはは……";
+
   return (
-    <div className="relative">
-      {/* <Coment /> */}
+    <div className="relative inline-block">
+      <Fukidashi text={text} />
       <Icon />
     </div>
   );

@@ -1,13 +1,13 @@
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 
 type item = {
-  title: string
-  alt: string
-  url: string
-  logo: IconDefinition
-}
+  title: string;
+  alt: string;
+  url: string;
+  logo: IconDefinition;
+};
 
 export const Brand: React.VFC<{ item: item }> = (props) => {
   return (
@@ -23,5 +23,5 @@ export const Brand: React.VFC<{ item: item }> = (props) => {
         <FontAwesomeIcon icon={props.item.logo} size="1x" />
       </a>
     </>
-  )
-}
+  );
+};

@@ -1,24 +1,26 @@
-import React from 'react'
-import { Icon } from '../Icon'
-// import { Coment } from '../Coment'
-import { PageDescription } from '../PageDescription'
+import React from "react";
+import { Fukidashi } from "../Fukidashi";
+import { Icon } from "../Icon";
+import { PageDescription } from "../PageDescription";
 
 const ProfileIcon = () => {
+  const text = "にはは……";
+
   return (
-    <div className="relative">
-      {/* <Coment /> */}
+    <div className="relative inline-block">
+      <Fukidashi text={text} />
       <Icon />
     </div>
-  )
-}
+  );
+};
 
 const Description = () => {
   return (
     <div className="m-3 mt-8 sm:mt-3 box-border sm:ml-16 max-w-xs">
       <PageDescription />
     </div>
-  )
-}
+  );
+};
 
 export const Profile: React.VFC = () => {
   return (
@@ -26,5 +28,5 @@ export const Profile: React.VFC = () => {
       <ProfileIcon />
       <Description />
     </div>
-  )
-}
+  );
+};

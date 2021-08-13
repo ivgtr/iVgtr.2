@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export const Header: React.FC = ({ children }) => {
   return (
@@ -9,5 +9,5 @@ export const Header: React.FC = ({ children }) => {
         </h1>
       </header>
     </>
-  )
-}
+  );
+};

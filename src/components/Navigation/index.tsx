@@ -1,7 +1,7 @@
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Link from 'next/link'
-import React from 'react'
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
+import React from "react";
 
 export const Navigation = () => {
   return (
@@ -12,5 +12,5 @@ export const Navigation = () => {
         </a>
       </Link>
     </nav>
-  )
-}
+  );
+};

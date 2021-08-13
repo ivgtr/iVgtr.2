@@ -1,11 +1,11 @@
-import classNames from 'classnames'
-import Head from 'next/head'
-import Link from 'next/link'
-import React from 'react'
-import { Icon } from '../../components/Icon'
-import { Navigation } from '../../components/Navigation'
-import { Contact } from '../../components/PageDescription'
-import classes from './blog.module.scss'
+import classNames from "classnames";
+import Head from "next/head";
+import Link from "next/link";
+import React from "react";
+import { Icon } from "../../components/Icon";
+import { Navigation } from "../../components/Navigation";
+import { Contact } from "../../components/PageDescription";
+import classes from "./blog.module.scss";
 
 const Articles = () => {
   return (
@@ -19,8 +19,8 @@ const Articles = () => {
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};
 const Profile = () => {
   return (
     <div className="sm:inline-block hidden">
@@ -28,20 +28,20 @@ const Profile = () => {
       <h1 className="text-3xl font-bold">iVgtr</h1>
       <Contact />
     </div>
-  )
-}
+  );
+};
 
 const Main = () => {
   return (
-    <div className={classNames('sm:grid items-center justify-center h-full px-4', classes.g)}>
+    <div className={classNames("sm:grid items-center justify-center h-full px-4", classes.g)}>
       <Profile />
       <Articles />
     </div>
-  )
-}
+  );
+};
 
 const Blog = () => {
-  const title = 'blog'
+  const title = "blog";
 
   return (
     <>
@@ -55,7 +55,7 @@ const Blog = () => {
         <Main />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

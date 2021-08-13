@@ -1,17 +1,25 @@
-import classNames from 'classnames'
-import React from 'react'
-import classes from './ContentsList.module.scss'
+import classNames from "classnames";
+import React from "react";
+import classes from "./ContentsList.module.scss";
 
-export const ContentsList = () => {
+type WorksList = { title: string }[];
+
+export const ContentsList = ({ watchingList }: { watchingList: WorksList }) => {
   return (
-    <div className={classNames('mt-4', classes.list)}>
+    <div className={classNames("mt-4", classes.list)}>
       <p className="text-3l font-bold">一覧</p>
 
       <ul>
         <li className="mt-4">
-          <h3 className="font-bold">今期のアニメ</h3>
+          <h3 className="font-bold">今期見てるアニメ</h3>
           <ul>
-            <li>まだ</li>
+            {watchingList.length > 0 ? (
+              watchingList.map(({ title }, key) => {
+                return <li key={key}>{title}</li>;
+              })
+            ) : (
+              <li>まだ</li>
+            )}
           </ul>
         </li>
         <li className="mt-4">
@@ -56,5 +64,5 @@ export const ContentsList = () => {
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};

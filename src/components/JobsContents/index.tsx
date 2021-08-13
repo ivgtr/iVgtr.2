@@ -1,61 +1,61 @@
-import classNames from 'classnames'
-import dayjs from 'dayjs'
-import React from 'react'
-import classes from './JobsContents.module.scss'
+import classNames from "classnames";
+import dayjs from "dayjs";
+import React from "react";
+import classes from "./JobsContents.module.scss";
 
 type Repository = {
-  title: string
-  url: string
-  description: string
-  update: string
-}
+  title: string;
+  url: string;
+  description: string;
+  update: string;
+};
 
-type Repositories = Repository[]
+type Repositories = Repository[];
 
 const badgesList = [
   {
-    name: 'Pro Twitter User',
-    color: '#00acee'
+    name: "Pro Twitter User",
+    color: "#00acee",
   },
   {
-    name: 'Vue/Nuxt.js',
-    color: '#42b883'
+    name: "Vue/Nuxt.js",
+    color: "#42b883",
   },
   {
-    name: 'React/Next.js',
-    color: '#00d8ff'
+    name: "React/Next.js",
+    color: "#00d8ff",
   },
   {
-    name: 'TypeScript',
-    color: '#3178c6'
+    name: "TypeScript",
+    color: "#3178c6",
   },
   {
-    name: 'Node.js',
-    color: '#6cc24a'
+    name: "Node.js",
+    color: "#6cc24a",
   },
   {
-    name: 'Python',
-    color: '#4584b6'
-  }
-]
+    name: "Python",
+    color: "#4584b6",
+  },
+];
 
 const Skills = () => {
   return (
     <ul className="flex flex-wrap">
       {badgesList.map((item, i) => {
         const style = {
-          backgroundColor: item.color
-        }
+          backgroundColor: item.color,
+        };
         return (
           <li className="text-white bg-gray-700 flex text-xs mt-3 mr-2 last:mr-0" key={i}>
             <span className="inline-block h-full w-2" style={style}></span>
             <p className="px-2 py-1">{item.name}</p>
           </li>
-        )
+        );
       })}
     </ul>
-  )
-}
+  );
+};
 
 const Works: React.VFC<{ worksList: Repositories }> = ({ worksList }) => {
   return (
@@ -64,7 +64,7 @@ const Works: React.VFC<{ worksList: Repositories }> = ({ worksList }) => {
         return (
           <li className="mt-4" key={i}>
             <p className="font-bold">
-              {item.title}{' '}
+              {item.title}{" "}
               <a
                 href={item.url}
                 target="_blank"
@@ -76,14 +76,14 @@ const Works: React.VFC<{ worksList: Repositories }> = ({ worksList }) => {
             </p>
             <ul>
               <li>{item.description}</li>
-              <li>update: {dayjs(item.update).format('YYYY-MM-DD')}</li>
+              <li>update: {dayjs(item.update).format("YYYY-MM-DD")}</li>
             </ul>
           </li>
-        )
+        );
       })}
     </ul>
-  )
-}
+  );
+};
 
 export const JobsContents: React.VFC<{ worksList: Repositories }> = ({ worksList }) => {
   return (
@@ -95,7 +95,7 @@ export const JobsContents: React.VFC<{ worksList: Repositories }> = ({ worksList
           <h3 className="font-bold">Skills</h3>
           <Skills />
         </section>
-        <section className={classNames('mt-8', classes.list)}>
+        <section className={classNames("mt-8", classes.list)}>
           <h3 className="font-bold">Works</h3>
           <p>
             全て
@@ -113,5 +113,5 @@ export const JobsContents: React.VFC<{ worksList: Repositories }> = ({ worksList
         </section>
       </article>
     </div>
-  )
-}
+  );
+};

@@ -44,14 +44,14 @@ export const getStaticProps = async () => {
   const BEARER_TOKEN = process.env.TWITTER_BEARER_TOKEN;
 
   try {
-    // const params = {
-    //   screen_name: "mawaru_hana",
-    // };
+    const params = {
+      screen_name: "mawaru_hana",
+    };
 
-    // const query_params = new URLSearchParams(params);
+    const query_params = new URLSearchParams(params);
 
     const data: TwitterResponse = await axios
-      .get(`${USER_ENDPOINT}?screen_name=mawaru_hana`, {
+      .get(`${USER_ENDPOINT}?${query_params}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${BEARER_TOKEN}`,
@@ -64,7 +64,11 @@ export const getStaticProps = async () => {
     const { created_at, screen_name, name } = data;
 
     return {
-      props: { created_at, screen_name, user_name: name },
+      props: {
+        created_at: created_at || "2020-01-01",
+        screen_name: screen_name || "hoge",
+        user_name: name || "fuga",
+      },
       revalidate: 60 * 60 * 24,
     };
   } catch (e) {

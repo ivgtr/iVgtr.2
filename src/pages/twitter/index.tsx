@@ -16,10 +16,14 @@ type TwitterResponse = {
   created_at: string;
   screen_name: string;
   name: string;
-  statuses_count: number;
 };
 
 const Twitter: NextPage<Props> = (props) => {
+  const { twitter_profile } = props;
+  console.log(twitter_profile);
+
+  const { created_at, screen_name, name } = twitter_profile;
+
   return (
     <>
       <Head>
@@ -31,7 +35,11 @@ const Twitter: NextPage<Props> = (props) => {
         <Navigation />
         <Container>
           <Header>twitter...</Header>
-          <div>{typeof window !== "undefined" && <TwitterInfo {...props} />}</div>
+          <div>
+            {typeof window !== "undefined" && (
+              <TwitterInfo {...{ created_at, screen_name, user_name: name }} />
+            )}
+          </div>
         </Container>
       </div>
     </>
@@ -50,8 +58,8 @@ export const getStaticProps = async () => {
 
     const query_params = new URLSearchParams(params);
 
-    const data: TwitterResponse = await axios
-      .get(`${USER_ENDPOINT}?${query_params}`, {
+    const data = await axios
+      .get<TwitterResponse>(`${USER_ENDPOINT}?${query_params}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${BEARER_TOKEN}`,
@@ -61,20 +69,22 @@ export const getStaticProps = async () => {
 
     console.log(data);
 
-    const { created_at, screen_name, name } = data;
+    if (!data) {
+      return {
+        props: { twitter_profile: { created_at: "2020-01-01", screen_name: "hoge", name: "fuga" } },
+      };
+    }
 
     return {
       props: {
-        created_at: created_at || "2020-01-01",
-        screen_name: screen_name || "hoge",
-        user_name: name || "fuga",
+        twitter_profile: data,
       },
       revalidate: 60 * 60 * 24,
     };
   } catch (e) {
     console.log(e);
     return {
-      props: { created_at: "2020-01-01", screen_name: "hoge", user_name: "fuga" },
+      props: { twitter_profile: { created_at: "2020-01-01", screen_name: "hoge", name: "fuga" } },
     };
   }
 };

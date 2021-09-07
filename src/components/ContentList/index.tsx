@@ -1,14 +1,12 @@
 import classNames from "classnames";
 import React from "react";
-import classes from "./ContentsList.module.scss";
+import classes from "./ContentList.module.scss";
 
-type WorksList = { title: string }[];
+type WorksList = { title: string; image: { recommendedImageUrl: string } }[];
 
-export const ContentsList = ({ watchingList }: { watchingList: WorksList }) => {
+export const ContentList = ({ watchingList }: { watchingList: WorksList }) => {
   return (
     <div className={classNames("mt-4", classes.list)}>
-      <p className="text-3l font-bold">一覧</p>
-
       <ul>
         <li className="mt-4">
           <h3 className="font-bold">今期見てるアニメ</h3>
@@ -23,7 +21,7 @@ export const ContentsList = ({ watchingList }: { watchingList: WorksList }) => {
           </ul>
         </li>
         <li className="mt-4">
-          <h3 className="font-bold">作品</h3>
+          <h3 className="font-bold">好きなものたち</h3>
           <ul>
             <li>プリパラ/プリティーリズム RL</li>
             <li>アイカツ!</li>
@@ -34,32 +32,6 @@ export const ContentsList = ({ watchingList }: { watchingList: WorksList }) => {
             <li>うたわれるもの</li>
             <li>CLANNAD</li>
             <li>ワンダーエッグ・プライオリティ</li>
-          </ul>
-        </li>
-        <li className="mt-4">
-          <h3 className="font-bold">ゲーム</h3>
-          <ul>
-            <li>DarkSouls</li>
-            <li>Battlefield 3</li>
-            <li>グランブルーファンタジーファンタジー</li>
-          </ul>
-        </li>
-        <li className="mt-4">
-          <h3 className="font-bold">ブランド</h3>
-          <ul>
-            <li>フロムソフトウェア</li>
-            <li>すみっこソフト</li>
-            <li>Key</li>
-          </ul>
-        </li>
-        <li className="mt-4">
-          <h3 className="font-bold">ライター</h3>
-          <ul>
-            <li>王雀孫</li>
-            <li>すかぢ</li>
-            <li>衣笠彰梧</li>
-            <li>渡辺僚一</li>
-            <li>朱門優</li>
           </ul>
         </li>
       </ul>

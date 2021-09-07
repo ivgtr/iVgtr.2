@@ -67,7 +67,10 @@ export const getStaticProps = async () => {
         },
       })
       .then((res) => {
-        console.log(res.status);
+        console.log("----res");
+        console.log(res);
+        console.log("----res-data");
+        console.log(res.data);
 
         return res.data;
       });

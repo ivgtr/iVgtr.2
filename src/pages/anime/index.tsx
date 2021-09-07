@@ -128,6 +128,5 @@ export const getStaticProps = async () => {
   return {
     props: { watchingList: nodes },
     revalidate: 60 * 60 * 24,
-    fallback: false,
   };
 };

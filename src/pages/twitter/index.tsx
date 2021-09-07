@@ -101,27 +101,26 @@ export const getStaticProps = async () => {
   const USER_ENDPOINT = "https://api.twitter.com/1.1/users/show.json";
   const BEARER_TOKEN = process.env.TWITTER_BEARER_TOKEN;
 
-  const res = await fetch(`${USER_ENDPOINT}?screen_name=mawaru_hana`, {
+  const params = {
+    screen_name: "mawaru_hana",
+  };
+
+  const query_params = new URLSearchParams(params);
+
+  const res = await fetch(`${USER_ENDPOINT}?${query_params}`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${BEARER_TOKEN}`,
     },
   });
-  console.log(res);
-
   const data: TwitterResponse = await res.json();
 
   console.log(data);
-
-  if (!data) {
-    return { props: { created_at: "hoge", screen_name: "fuga", user_name: "piyo" } };
-  }
 
   const { created_at, screen_name, name } = data;
 
   return {
     props: { created_at, screen_name, user_name: name },
     revalidate: 60 * 60 * 24,
-    fallback: false,
   };
 };

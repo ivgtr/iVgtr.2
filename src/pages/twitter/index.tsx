@@ -1,3 +1,4 @@
+import axios from "axios";
 import { InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
 import React from "react";
@@ -49,12 +50,14 @@ export const getStaticProps = async () => {
 
     // const query_params = new URLSearchParams(params);
 
-    const data: TwitterResponse = await fetch(`${USER_ENDPOINT}?screen_name=mawaru_hana`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${BEARER_TOKEN}`,
-      },
-    }).then((res) => res.json());
+    const data: TwitterResponse = await axios
+      .get(`${USER_ENDPOINT}?screen_name=mawaru_hana`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${BEARER_TOKEN}`,
+        },
+      })
+      .then((res) => res.data);
 
     console.log(data);
 

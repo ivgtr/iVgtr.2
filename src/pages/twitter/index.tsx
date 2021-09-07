@@ -5,7 +5,7 @@ import { Container } from "../../components/Container";
 import { Header } from "../../components/Header";
 import { Navigation } from "../../components/Navigation";
 
-const title = "iVgtr.me | twitter";
+const title = "iVgtr.me | Twitter";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 type TwitterResponse = {

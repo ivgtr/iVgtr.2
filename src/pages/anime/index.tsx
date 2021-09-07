@@ -5,7 +5,7 @@ import { Container } from "../../components/Container";
 import { Header } from "../../components/Header";
 import { Navigation } from "../../components/Navigation";
 
-const title = "iVgtr.me | anime";
+const title = "iVgtr.me | Anime";
 const animeList = [
   { title: "プリパラ/プリティーリズム RL" },
   { title: "少女革命ウテナ" },

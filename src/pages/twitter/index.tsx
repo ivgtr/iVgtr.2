@@ -57,7 +57,8 @@ const Content: React.VFC<{
   );
 };
 
-const Twitter: NextPage<Props> = ({ created_at, ...props }) => {
+const Twitter: NextPage<Props> = ({ data }) => {
+  const { created_at, ...props } = data;
   const refRequestAnimationFrame = useRef<ReturnType<typeof requestAnimationFrame>>();
   const created_time = new Date(created_at).getTime();
   const getDiffTime = useCallback(() => Math.floor(Date.now() - created_time), [created_time]);
@@ -107,20 +108,17 @@ export const getStaticProps = async () => {
 
   const query_params = new URLSearchParams(params);
 
-  const res = await fetch(`${USER_ENDPOINT}?${query_params}`, {
+  const data: TwitterResponse = await fetch(`${USER_ENDPOINT}?${query_params}`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${BEARER_TOKEN}`,
     },
-  });
-  const data: TwitterResponse = await res.json();
-
-  console.log(data);
+  }).then((res) => res.json());
 
   const { created_at, screen_name, name } = data;
 
   return {
-    props: { created_at, screen_name, user_name: name },
+    props: { data: { created_at, screen_name, user_name: name } },
     revalidate: 60 * 60 * 24,
   };
 };

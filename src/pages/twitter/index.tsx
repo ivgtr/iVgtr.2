@@ -50,6 +50,7 @@ export default Twitter;
 
 export const getStaticProps = async () => {
   const BEARER_TOKEN = process.env.TWITTER_BEARER_TOKEN;
+  console.log(BEARER_TOKEN);
 
   try {
     const params = {
@@ -65,11 +66,16 @@ export const getStaticProps = async () => {
           Authorization: `Bearer ${BEARER_TOKEN}`,
         },
       })
-      .then((res) => res.data);
+      .then((res) => {
+        console.log(res.status);
+
+        return res.data;
+      });
 
     console.log(data);
 
     if (!data) {
+      console.log("datanai");
       return {
         props: { twitter_profile: { created_at: "2020-01-01", screen_name: "hoge", name: "fuga" } },
       };
@@ -83,6 +89,8 @@ export const getStaticProps = async () => {
     };
   } catch (e) {
     console.log(e);
+    console.log("dataerror");
+
     return {
       props: { twitter_profile: { created_at: "2020-01-01", screen_name: "hoge", name: "fuga" } },
     };

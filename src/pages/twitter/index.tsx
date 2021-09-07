@@ -50,7 +50,6 @@ export const getStaticProps = async () => {
 
     const data: TwitterResponse = await fetch(`${USER_ENDPOINT}?${query_params}`, {
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Bearer ${BEARER_TOKEN}`,
       },
     }).then((res) => res.json());

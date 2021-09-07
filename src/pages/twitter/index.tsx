@@ -7,6 +7,8 @@ import { Navigation } from "../../components/Navigation";
 import { TwitterInfo } from "../../components/TwitterInfo";
 
 const title = "iVgtr.me | Twitter";
+const USER_ENDPOINT = "https://api.twitter.com/1.1/users/show.json";
+
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 type TwitterResponse = {
@@ -38,21 +40,23 @@ const Twitter: NextPage<Props> = (props) => {
 export default Twitter;
 
 export const getStaticProps = async () => {
-  const USER_ENDPOINT = "https://api.twitter.com/1.1/users/show.json";
   const BEARER_TOKEN = process.env.TWITTER_BEARER_TOKEN;
 
   try {
-    const params = {
-      screen_name: "mawaru_hana",
-    };
+    // const params = {
+    //   screen_name: "mawaru_hana",
+    // };
 
-    const query_params = new URLSearchParams(params);
+    // const query_params = new URLSearchParams(params);
 
-    const data: TwitterResponse = await fetch(`${USER_ENDPOINT}?${query_params}`, {
+    const data: TwitterResponse = await fetch(`${USER_ENDPOINT}?screen_name=mawaru_hana`, {
+      method: "GET",
       headers: {
         Authorization: `Bearer ${BEARER_TOKEN}`,
       },
     }).then((res) => res.json());
+
+    console.log(data);
 
     const { created_at, screen_name, name } = data;
 
@@ -62,7 +66,6 @@ export const getStaticProps = async () => {
     };
   } catch (e) {
     console.log(e);
-
     return {
       props: { created_at: "2020-01-01", screen_name: "hoge", user_name: "fuga" },
     };

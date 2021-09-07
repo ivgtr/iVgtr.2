@@ -1,4 +1,10 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+
+type Props = {
+  created_at: string;
+  screen_name: string;
+  user_name: string;
+};
 
 type TimeDiff = {
   sec: number;
@@ -17,7 +23,7 @@ const getDiffTime = (ms: number): TimeDiff => {
   return { sec, min, hour, date };
 };
 
-export const TwitterInfo: React.VFC<{
+const Content: React.VFC<{
   diffTime: number;
   screen_name: string;
   user_name: string;
@@ -40,4 +46,27 @@ export const TwitterInfo: React.VFC<{
       <span className="inline-block px-1 font-bold">{diff.sec}</span>秒が経過しました。
     </p>
   );
+};
+
+export const TwitterInfo: React.VFC<Props> = ({ created_at, ...props }) => {
+  const refRequestAnimationFrame = useRef<ReturnType<typeof requestAnimationFrame>>();
+  const created_time = new Date(created_at).getTime();
+  const getDiffTime = useCallback(() => Math.floor(Date.now() - created_time), [created_time]);
+  const [diffTime, setDiffTime] = useState<number>(getDiffTime());
+
+  const animate = useCallback(() => {
+    setDiffTime(getDiffTime());
+    refRequestAnimationFrame.current = requestAnimationFrame(animate);
+  }, [getDiffTime]);
+
+  useEffect(() => {
+    refRequestAnimationFrame.current = requestAnimationFrame(animate);
+    return () => {
+      if (refRequestAnimationFrame.current) {
+        return cancelAnimationFrame(refRequestAnimationFrame.current);
+      }
+    };
+  }, [animate]);
+
+  return <Content diffTime={diffTime} {...props} />;
 };

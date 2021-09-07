@@ -1,6 +1,6 @@
 import { InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React from "react";
 import { Container } from "../../components/Container";
 import { Header } from "../../components/Header";
 import { Navigation } from "../../components/Navigation";
@@ -16,27 +16,7 @@ type TwitterResponse = {
   statuses_count: number;
 };
 
-const Twitter: NextPage<Props> = ({ data }) => {
-  const { created_at, ...props } = data;
-  const refRequestAnimationFrame = useRef<ReturnType<typeof requestAnimationFrame>>();
-  const created_time = new Date(created_at).getTime();
-  const getDiffTime = useCallback(() => Math.floor(Date.now() - created_time), [created_time]);
-  const [diffTime, setDiffTime] = useState<number>(getDiffTime());
-
-  const animate = useCallback(() => {
-    setDiffTime(getDiffTime());
-    refRequestAnimationFrame.current = requestAnimationFrame(animate);
-  }, [getDiffTime]);
-
-  useEffect(() => {
-    refRequestAnimationFrame.current = requestAnimationFrame(animate);
-    return () => {
-      if (refRequestAnimationFrame.current) {
-        return cancelAnimationFrame(refRequestAnimationFrame.current);
-      }
-    };
-  }, [animate]);
-
+const Twitter: NextPage<Props> = (props) => {
   return (
     <>
       <Head>
@@ -48,9 +28,7 @@ const Twitter: NextPage<Props> = ({ data }) => {
         <Navigation />
         <Container>
           <Header>twitter...</Header>
-          <div>
-            {typeof window !== "undefined" && <TwitterInfo diffTime={diffTime} {...props} />}
-          </div>
+          <div>{typeof window !== "undefined" && <TwitterInfo {...props} />}</div>
         </Container>
       </div>
     </>
@@ -79,7 +57,7 @@ export const getStaticProps = async () => {
   const { created_at, screen_name, name } = data;
 
   return {
-    props: { data: { created_at, screen_name, user_name: name } },
+    props: { created_at, screen_name, user_name: name },
     revalidate: 60 * 60 * 24,
   };
 };

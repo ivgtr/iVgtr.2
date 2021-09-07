@@ -4,7 +4,6 @@ import React from "react";
 import { Container } from "../../components/Container";
 import { Header } from "../../components/Header";
 import { Navigation } from "../../components/Navigation";
-import { TwitterInfo } from "../../components/TwitterInfo";
 
 const title = "iVgtr.me | Twitter";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -16,7 +15,7 @@ type TwitterResponse = {
   statuses_count: number;
 };
 
-const Twitter: NextPage<Props> = (props) => {
+const Twitter: NextPage<Props> = () => {
   return (
     <>
       <Head>
@@ -28,7 +27,7 @@ const Twitter: NextPage<Props> = (props) => {
         <Navigation />
         <Container>
           <Header>twitter...</Header>
-          <div>{typeof window !== "undefined" && <TwitterInfo {...props} />}</div>
+          <div>test</div>
         </Container>
       </div>
     </>

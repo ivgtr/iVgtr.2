@@ -101,19 +101,15 @@ export const getStaticProps = async () => {
   const USER_ENDPOINT = "https://api.twitter.com/1.1/users/show.json";
   const CONSUMER_KEY = process.env.TWITTER_CONSUMER_KEY;
 
-  const params = {
-    screen_name: "mawaru_hana",
-  };
-
-  const query_params = new URLSearchParams(params);
-
-  const res = await fetch(`${USER_ENDPOINT}?${query_params}`, {
+  const res = await fetch(`${USER_ENDPOINT}?screen_name=mawaru_hana`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${CONSUMER_KEY}`,
     },
   });
-  const { created_at, screen_name, name }: TwitterResponse = await res.json();
+  const data: TwitterResponse = await res.json();
+
+  const { created_at, screen_name, name } = data;
 
   return {
     props: { created_at, screen_name, user_name: name },

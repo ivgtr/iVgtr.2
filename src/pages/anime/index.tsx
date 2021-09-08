@@ -2,12 +2,11 @@ import { InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { Container } from "../../components/Container";
-import { ContentsDescription } from "../../components/ContentsDescription";
-import { ContentsLink } from "../../components/ContentsLink";
-import { ContentsList } from "../../components/ContentsList";
+import { ContentList } from "../../components/ContentList";
 import { Header } from "../../components/Header";
 import { Navigation } from "../../components/Navigation";
 
+const title = "iVgtr.me | Anime";
 type WorksList = { title: string }[];
 
 type AnnictAPIResponse = {
@@ -22,37 +21,32 @@ type AnnictAPIResponse = {
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Me = () => {
-  return (
-    <section className="mt-8">
-      <h2 className="text-xl font-bold">
-        iVgtr
-        <sup>
-          [<i>?</i>]
-        </sup>
-      </h2>
-      <p>
-        <a
-          href="https://twitter.com/mawaru_hana"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline text-blue-500"
-        >
-          𝑻𝒘𝒊𝒕𝒕𝒆𝒓
-        </a>
-        の通りに生きてる。
-      </p>
-      <p>ｺﾝﾋﾟｭｰﾀｰと🌈 が好き。</p>
-      <p>好きなもの以外に興味が向かない。</p>
-    </section>
-  );
-};
 const Otaku = ({ watchingList }: { watchingList: WorksList }) => {
+  const animeList = [
+    {
+      discription: "最近やっとる",
+      list: watchingList,
+    },
+    {
+      discription: "すき",
+      list: [
+        { title: "プリパラ/プリティーリズム RL" },
+        { title: "少女革命ウテナ" },
+        { title: "輪るピングドラム" },
+        { title: "カードキャプターさくら" },
+        { title: "小麦ちゃんマジカルて" },
+        { title: "CLANNAD" },
+        { title: "ワンダーエッグ・プライオリティ" },
+      ],
+    },
+  ];
+
   return (
     <section className="mt-8">
-      <h2 className="text-xl font-bold">好きなものたち</h2>
-      <ContentsLink />
-      <ContentsList watchingList={watchingList} />
+      <h2 className="text-xl font-bold">🌈</h2>
+      <div className="mt-4">
+        <ContentList list={animeList} />
+      </div>
     </section>
   );
 };
@@ -60,19 +54,13 @@ const Otaku = ({ watchingList }: { watchingList: WorksList }) => {
 const Main = ({ watchingList }: { watchingList: WorksList }) => {
   return (
     <Container>
-      <Header>more...</Header>
-      <article>
-        <ContentsDescription />
-        <Me />
-        <Otaku watchingList={watchingList} />
-      </article>
+      <Header>anime...</Header>
+      <Otaku watchingList={watchingList} />
     </Container>
   );
 };
 
-const Contents: NextPage<Props> = ({ watchingList }) => {
-  const title = "漏れ";
-
+const Anime: NextPage<Props> = ({ watchingList }) => {
   return (
     <>
       <Head>
@@ -88,7 +76,7 @@ const Contents: NextPage<Props> = ({ watchingList }) => {
   );
 };
 
-export default Contents;
+export default Anime;
 
 export const getStaticProps = async () => {
   const endpoint = process.env.ANNICT_API_URL;
@@ -97,11 +85,11 @@ export const getStaticProps = async () => {
   const nowTime = new Date();
   const season = `${nowTime.getFullYear()}-${split[Math.floor(nowTime.getMonth() / 3)]}`;
   const query = `query { 
-	viewer{
-    works(seasons: ["${season}"], state: WATCHING, orderBy: {field: SEASON, direction: DESC}){
-     nodes{
-      title
-    } 
+	viewer {
+    works(seasons: ["${season}"], state: WATCHING, orderBy: {field: SEASON, direction: DESC}) {
+      nodes {
+        title
+      }
     }
   }
 }`;

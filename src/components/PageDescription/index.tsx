@@ -82,7 +82,7 @@ const About = () => {
           <h3>name</h3>
 
           <ul>
-            <li>ねぎ/まわるはな</li>
+            <li>ねぎとろ/まわるはな</li>
           </ul>
         </li>
         <li>
@@ -93,10 +93,22 @@ const About = () => {
               趣味
               <ul>
                 <li>🏄 ネットサーフィン</li>
-                <li>🐔 Twitter</li>
                 <li>
-                  <Link href="/contents">
-                    <a className="hover:underline text-blue-500">MORE...</a>
+                  🐔{" "}
+                  <Link href="/twitter">
+                    <a className="hover:underline text-blue-500">/twitter</a>
+                  </Link>
+                </li>
+                <li>
+                  🎮{" "}
+                  <Link href="/game">
+                    <a className="hover:underline text-blue-500">/game</a>
+                  </Link>
+                </li>
+                <li>
+                  🌈{" "}
+                  <Link href="/anime">
+                    <a className="hover:underline text-blue-500">/anime</a>
                   </Link>
                 </li>
               </ul>

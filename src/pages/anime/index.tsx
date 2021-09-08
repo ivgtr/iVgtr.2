@@ -2,20 +2,11 @@ import { InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { Container } from "../../components/Container";
+import { ContentList } from "../../components/ContentList";
 import { Header } from "../../components/Header";
 import { Navigation } from "../../components/Navigation";
 
 const title = "iVgtr.me | Anime";
-const animeList = [
-  { title: "プリパラ/プリティーリズム RL" },
-  { title: "少女革命ウテナ" },
-  { title: "輪るピングドラム" },
-  { title: "カードキャプターさくら" },
-  { title: "小麦ちゃんマジカルて" },
-  { title: "CLANNAD" },
-  { title: "ワンダーエッグ・プライオリティ" },
-];
-
 type WorksList = { title: string }[];
 
 type AnnictAPIResponse = {
@@ -31,34 +22,30 @@ type AnnictAPIResponse = {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Otaku = ({ watchingList }: { watchingList: WorksList }) => {
+  const animeList = [
+    {
+      discription: "最近やっとる",
+      list: watchingList,
+    },
+    {
+      discription: "すき",
+      list: [
+        { title: "プリパラ/プリティーリズム RL" },
+        { title: "少女革命ウテナ" },
+        { title: "輪るピングドラム" },
+        { title: "カードキャプターさくら" },
+        { title: "小麦ちゃんマジカルて" },
+        { title: "CLANNAD" },
+        { title: "ワンダーエッグ・プライオリティ" },
+      ],
+    },
+  ];
+
   return (
     <section className="mt-8">
       <h2 className="text-xl font-bold">🌈</h2>
-      <div className="mt-4 break-words">
-        <ul className="pl-[1em] my-[0.5em] list-disc">
-          <li className="mt-4">
-            <h3 className="font-bold">今期見てるアニメ</h3>
-            <ul className="pl-[1em] my-[0.5em] list-[circle]">
-              {watchingList.length > 0 ? (
-                watchingList.map(({ title }, key) => {
-                  return <li key={key}>{title}</li>;
-                })
-              ) : (
-                <li>なにも見てないよ！</li>
-              )}
-            </ul>
-          </li>
-        </ul>
-        <ul className="pl-[1em] my-[0.5em] list-disc">
-          <li className="mt-4">
-            <h3 className="font-bold">すき</h3>
-            <ul className="pl-[1em] my-[0.5em] list-[circle]">
-              {animeList.map(({ title }, key) => {
-                return <li key={key}>{title}</li>;
-              })}
-            </ul>
-          </li>
-        </ul>
+      <div className="mt-4">
+        <ContentList list={animeList} />
       </div>
     </section>
   );

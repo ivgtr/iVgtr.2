@@ -1,40 +1,29 @@
-import classNames from "classnames";
 import React from "react";
-import classes from "./ContentList.module.scss";
 
-type WorksList = { title: string; image: { recommendedImageUrl: string } }[];
+type List = {
+  discription: string;
+  list: {
+    title: string;
+  }[];
+}[];
 
-export const ContentList = ({ watchingList }: { watchingList: WorksList }) => {
+export const ContentList = ({ list }: { list: List }) => {
   return (
-    <div className={classNames("mt-4", classes.list)}>
-      <ul>
-        <li className="mt-4">
-          <h3 className="font-bold">今期見てるアニメ</h3>
-          <ul>
-            {watchingList.length > 0 ? (
-              watchingList.map(({ title }, key) => {
-                return <li key={key}>{title}</li>;
-              })
-            ) : (
-              <li>まだ</li>
-            )}
+    <div className="break-words">
+      {list.map((items, index) => {
+        return (
+          <ul className="pl-[1em] my-[0.5em] list-disc" key={index}>
+            <li className="mt-4">
+              <h3 className="font-bold">{items.discription}</h3>
+              <ul className="pl-[1em] my-[0.5em] list-[circle]">
+                {items.list.map(({ title }, key) => {
+                  return <li key={key}>{title}</li>;
+                })}
+              </ul>
+            </li>
           </ul>
-        </li>
-        <li className="mt-4">
-          <h3 className="font-bold">好きなものたち</h3>
-          <ul>
-            <li>プリパラ/プリティーリズム RL</li>
-            <li>アイカツ!</li>
-            <li>少女革命ウテナ/輪るピングドラム</li>
-            <li>ガンダムシリーズ</li>
-            <li>カードキャプターさくら</li>
-            <li>小麦ちゃんマジカルて</li>
-            <li>うたわれるもの</li>
-            <li>CLANNAD</li>
-            <li>ワンダーエッグ・プライオリティ</li>
-          </ul>
-        </li>
-      </ul>
+        );
+      })}
     </div>
   );
 };

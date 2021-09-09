@@ -10,7 +10,7 @@ export const Icon: React.VFC = () => {
           alt="伊吹風子"
           width={360}
           height={360}
-          className="hover:animate-spin"
+          className="hover:animate-spin rounded-full"
         />
       </div>
     </div>

@@ -88,7 +88,9 @@ const About = () => {
         <li>
           profile
           <ul>
-            <li>🎂 96/11/12</li>
+            <li>
+              <span className="mr-2">🎂</span>96/11/12
+            </li>
             <li>
               趣味
               <ul>

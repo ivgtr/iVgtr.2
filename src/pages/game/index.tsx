@@ -45,7 +45,9 @@ const Otaku = () => {
     <section className="mt-8">
       <h2 className="text-xl font-bold">🎮</h2>
       <div className="mt-4">
-        <ContentList list={gameList} />
+        {gameList.map(({ discription, list }, index) => {
+          return <ContentList list={list} discription={discription} key={`list${index}`} />;
+        })}
       </div>
     </section>
   );

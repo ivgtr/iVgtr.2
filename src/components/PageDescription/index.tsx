@@ -88,25 +88,29 @@ const About = () => {
         <li>
           profile
           <ul>
-            <li>🎂 96/11/12</li>
+            <li>
+              <span className="mr-2">🎂</span>96/11/12
+            </li>
             <li>
               趣味
               <ul>
-                <li>🏄 ネットサーフィン</li>
                 <li>
-                  🐔{" "}
+                  <span className="mr-2">🏄</span>ネットサーフィン
+                </li>
+                <li>
+                  <span className="mr-2">🐔</span>
                   <Link href="/twitter">
                     <a className="hover:underline text-blue-500">/twitter</a>
                   </Link>
                 </li>
                 <li>
-                  🎮{" "}
+                  <span className="mr-2">🎮</span>
                   <Link href="/game">
                     <a className="hover:underline text-blue-500">/game</a>
                   </Link>
                 </li>
                 <li>
-                  🌈{" "}
+                  <span className="mr-2">🌈</span>
                   <Link href="/anime">
                     <a className="hover:underline text-blue-500">/anime</a>
                   </Link>

@@ -1,29 +1,24 @@
 import React from "react";
 
 type List = {
-  discription: string;
-  list: {
-    title: string;
-  }[];
+  title: string;
 }[];
 
-export const ContentList = ({ list }: { list: List }) => {
+export const ContentList = ({ list, discription }: { list: List; discription: string }) => {
   return (
-    <div className="break-words">
-      {list.map((items, index) => {
-        return (
-          <ul className="pl-[1em] my-[0.5em] list-disc" key={index}>
-            <li className="mt-4">
-              <h3 className="font-bold">{items.discription}</h3>
-              <ul className="pl-[1em] my-[0.5em] list-[circle]">
-                {items.list.map(({ title }, key) => {
-                  return <li key={key}>{title}</li>;
-                })}
-              </ul>
-            </li>
-          </ul>
-        );
-      })}
-    </div>
+    <ul className="pl-[1em] my-[0.5em] list-disc">
+      <li className="mt-4">
+        <h3 className="font-bold">{discription}</h3>
+        <ul className="pl-[1em] my-[0.5em] list-[circle]">
+          {list.length > 0 ? (
+            list.map(({ title }, key) => {
+              return <li key={key}>{title}</li>;
+            })
+          ) : (
+            <li>No data</li>
+          )}
+        </ul>
+      </li>
+    </ul>
   );
 };

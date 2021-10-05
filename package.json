@@ -5,26 +5,26 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "format": "prettier -w \"./src/**/*.{js,jsx,ts,tsx,css}\"",
+    "format": "prettier -w \"./src/**/*.{js,jsx,ts,tsx,css,scss}\"",
     "lint": "eslint ./src/**/*.tsx",
     "proxy": "ngrok http 3000"
   },
   "devDependencies": {
-    "@types/node": "^16.7.10",
-    "@types/react": "^17.0.20",
+    "@types/node": "^16.10.2",
+    "@types/react": "^17.0.27",
     "@types/react-dom": "^17.0.9",
-    "autoprefixer": "^10.3.4",
+    "autoprefixer": "^10.3.7",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.1.2",
     "eslint-config-sumikko": "^1.2.2",
     "irontail": "^0.2.0",
-    "postcss": "^8.3.6",
-    "prettier": "^2.3.2",
-    "sass": "^1.39.0",
+    "postcss": "^8.3.9",
+    "prettier": "^2.4.1",
+    "sass": "^1.42.1",
     "stylelint": "^13.13.1",
     "stylelint-config-sumikko": "^0.1.2",
-    "tailwindcss": "^2.2.9",
-    "typescript": "^4.4.2"
+    "tailwindcss": "^2.2.16",
+    "typescript": "^4.4.3"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.4",
@@ -33,7 +33,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "0.1.15",
     "classnames": "^2.3.1",
-    "dayjs": "^1.10.6",
+    "dayjs": "^1.10.7",
     "next": "^11.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"

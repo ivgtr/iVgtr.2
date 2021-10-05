@@ -64,7 +64,7 @@ const Works: React.VFC<{ worksList: Repositories }> = ({ worksList }) => {
         return (
           <li className="mt-4" key={i}>
             <p className="font-bold">
-              {item.title}{" "}
+              {item.title}&nbsp;
               <a
                 href={item.url}
                 target="_blank"
@@ -89,7 +89,9 @@ export const JobsContents: React.VFC<{ worksList: Repositories }> = ({ worksList
   return (
     <div>
       <h2 className="text-xl font-bold">Web Developer</h2>
-      <p>🌈 ｵﾀｸらしくﾌﾟﾛｸﾞﾗﾐﾝｸﾞとかをしてる</p>
+      <p>
+        <span className="mr-2">🌈</span>ｵﾀｸらしくﾌﾟﾛｸﾞﾗﾐﾝｸﾞとかをしてる
+      </p>
       <article>
         <section className="mt-8">
           <h3 className="font-bold">Skills</h3>

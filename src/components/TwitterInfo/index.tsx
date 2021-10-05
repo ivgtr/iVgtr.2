@@ -23,7 +23,7 @@ const getDiffTime = (ms: number): TimeDiff => {
   return { sec, min, hour, date };
 };
 
-const Content: React.VFC<{
+const Contents: React.VFC<{
   diffTime: number;
   screen_name: string;
   user_name: string;
@@ -52,7 +52,7 @@ export const TwitterInfo: React.VFC<Props> = ({ created_at, ...props }) => {
   const refRequestAnimationFrame = useRef<ReturnType<typeof requestAnimationFrame>>();
   const created_time = new Date(created_at).getTime();
   const getDiffTime = useCallback(() => Math.floor(Date.now() - created_time), [created_time]);
-  const [diffTime, setDiffTime] = useState<number>(getDiffTime());
+  const [diffTime, setDiffTime] = useState<number>(Math.floor(created_time));
 
   const animate = useCallback(() => {
     setDiffTime(getDiffTime());
@@ -68,5 +68,5 @@ export const TwitterInfo: React.VFC<Props> = ({ created_at, ...props }) => {
     };
   }, [animate]);
 
-  return <Content diffTime={diffTime} {...props} />;
+  return <Contents diffTime={diffTime} {...props} />;
 };

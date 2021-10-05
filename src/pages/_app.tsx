@@ -24,7 +24,6 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta property="og:site_name" content={title} />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="shortcut icon" href="/favicon.ico" />
-        {/* ここに入れないとfontawesomeの調整が効かない */}
         <style>{dom.css()}</style>
       </Head>
       <Component {...pageProps} />

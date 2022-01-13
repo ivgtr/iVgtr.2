@@ -36,11 +36,11 @@ const TwitterContents: React.FC = () => {
 
             (async () => {
               try {
-                const res = await fetch(`/api/getTwitterData?name=${input.value}`).then<{
-                  data: TwitterResponse;
-                }>((res) => res.json());
+                const res = await fetch(`/api/twitter?name=${input.value}`).then<TwitterResponse>(
+                  (res) => res.json()
+                );
 
-                setTwitterData(res.data);
+                setTwitterData(res);
               } catch {
                 alert("screen_nameが間違っているかも");
               }

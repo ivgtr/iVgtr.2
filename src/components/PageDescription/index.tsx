@@ -1,9 +1,9 @@
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faDiscord, faGithub, faSteam, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faPenNib } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Brand } from "../Brand";
 import classes from "./PageDescription.module.scss";
 
@@ -26,6 +26,12 @@ const brandList: Item[] = [
     alt: "@ivgtr",
     url: "https://twitter.com/ivgtr",
     logo: faTwitter,
+  },
+  {
+    title: "はてなブログ",
+    alt: "はてなブログ",
+    url: "https://ivgtr.hatenablog.jp",
+    logo: faPenNib,
   },
   {
     title: "Steam",
@@ -74,6 +80,24 @@ export const Contact = () => {
 };
 
 const About = () => {
+  const [posts, setPosts] = useState<
+    { title: string; url: string; pubDate: Date; category: string }[]
+  >([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(`/api/rss`).then<{
+          rss: { title: string; url: string; pubDate: Date; category: string }[];
+        }>((res) => res.json());
+
+        setPosts(res.rss.slice(0, 3));
+      } catch {
+        alert("記事が取得できない");
+      }
+    })();
+  }, []);
+
   return (
     <section className={classNames("mt-4", classes.about)}>
       <h2 className="text-xl font-bold">About me</h2>
@@ -82,20 +106,21 @@ const About = () => {
           <h3>name</h3>
 
           <ul>
-            <li>ねぎとろ/まわるはな</li>
+            <li>ねぎとろ</li>
           </ul>
         </li>
         <li>
-          profile
+          <h3>profile</h3>
+
           <ul>
             <li>
               <span className="mr-2">🎂</span>96/11/12
             </li>
             <li>
-              趣味
+              興味があるもの
               <ul>
                 <li>
-                  <span className="mr-2">🏄</span>ネットサーフィン
+                  <span className="mr-2">🏄</span>Internet
                 </li>
                 <li>
                   <span className="mr-2">🐔</span>
@@ -117,12 +142,30 @@ const About = () => {
                 </li>
               </ul>
             </li>
+          </ul>
+        </li>
 
-            <li>
-              <Link href="/jobs">
-                <a className="hover:underline text-blue-500">その他</a>
-              </Link>
-            </li>
+        <li>
+          <h3>最新記事</h3>
+
+          <ul>
+            {posts.length > 0 &&
+              posts.map((post, i) => {
+                const date = new Date(post.pubDate);
+                return (
+                  <li key={`post${i}`}>
+                    <span className="pr-2">{`${date.toLocaleDateString()}`}</span>
+                    <a
+                      href={post.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline text-blue-500"
+                    >
+                      {post.title}
+                    </a>
+                  </li>
+                );
+              })}
           </ul>
         </li>
       </ul>

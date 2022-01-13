@@ -38,7 +38,7 @@ const getTwitterData: NextApiHandler = async (req, res) => {
 
     const { created_at, screen_name, name } = data;
 
-    res.status(200).json({ data: { created_at, screen_name, user_name: name } });
+    res.status(200).json({ created_at, screen_name, user_name: name });
   } catch {
     res.status(500);
     res.end();
